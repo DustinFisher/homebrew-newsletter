@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: homebrew-newsletter_development
+  min_messages: WARNING
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: homebrew-newsletter_test
+  min_messages: WARNING
+  pool: 5
