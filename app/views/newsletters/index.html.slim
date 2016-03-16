@@ -1,0 +1,27 @@
+.page-header
+  = link_to new_newsletter_path, class: 'btn btn-primary' do 
+    i.fa.fa-plus
+    |  New Newsletter
+  h1
+    | Listing newsletters
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Name
+        th
+        th
+        th
+    tbody
+      - @newsletters.each do | newsletter |
+        tr
+          td
+            = newsletter.name
+          td
+            = link_to 'Show', newsletter
+          td
+            = link_to 'Edit', edit_newsletter_path(newsletter) 
+          td
+            = link_to 'Destroy', newsletter, method: :delete, data: { confirm: 'Are you sure?' } 

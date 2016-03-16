@@ -1,0 +1,14 @@
+.page-header
+  = link_to newsletters_path, class: 'btn btn-default' do 
+    i.fa.fa-list-alt
+    |  Back 
+  = link_to edit_newsletter_path(@newsletter), class: 'btn btn-primary' do 
+    i.fa.fa-pencil
+    |  Edit 
+  h1
+    = @newsletter.name
+    |  Newsletter
+dl.dl-horizontal
+  = link_to new_newsletter_email_path(@newsletter), class: 'btn btn-primary' do 
+    i.fa.fa-plus
+    |  New Email

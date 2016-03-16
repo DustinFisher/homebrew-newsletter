@@ -1,0 +1,43 @@
+.page-header
+  = link_to new_link_path, class: 'btn btn-primary' do 
+    i.fa.fa-plus
+    |  New Link
+  h1
+    | Listing links
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Name
+        th
+          | Description
+        th
+          | Url
+        th
+          | Category
+        th
+          | Email
+        th
+        th
+        th
+    tbody
+      - @links.each do | link |
+        tr
+          td
+            = link.name
+          td
+            = truncate(link.description, length: 25)
+          td
+            = link.url
+          td
+            = link.category
+          td
+            = link.email.name
+          td
+            = link_to 'Show', link
+          td
+            = link_to 'Edit', edit_link_path(link) 
+          td
+            = link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } 

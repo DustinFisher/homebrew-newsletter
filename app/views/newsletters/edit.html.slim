@@ -1,0 +1,12 @@
+.page-header
+  = link_to newsletters_path, class: 'btn btn-default' do
+    i.fa.fa-list-alt
+    |  Back 
+  = link_to @newsletter, class: 'btn btn-primary' do
+    i.fa.fa-info-circle
+    |  Show 
+  h1
+    | Editing 
+    | newsletter
+
+= render 'form'

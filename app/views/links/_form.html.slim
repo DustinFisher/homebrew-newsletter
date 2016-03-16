@@ -1,0 +1,12 @@
+= simple_form_for(@link) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :url
+    = f.input :description
+    = f.input :category
+    = f.association :email
+
+  .form-actions
+    = f.button :submit
