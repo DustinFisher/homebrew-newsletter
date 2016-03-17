@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: links
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#  url         :string
+#  email_id    :integer
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#
+
 class LinksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_link, only: [:show, :edit, :update, :destroy]
@@ -16,6 +31,7 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = current_user.links.new
+    @link.email_id = params[:email_id]
   end
 
   # GET /links/1/edit
@@ -70,6 +86,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:name, :description, :url, :category, :email_id, :user_id)
+      params.require(:link).permit(:name, :description, :url, :category, :email_id, :user_id, :category_id)
     end
 end

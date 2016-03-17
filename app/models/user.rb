@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :categories
   has_many :links
   has_many :newsletters
   has_many :emails, through: :newsletters

@@ -1,7 +1,7 @@
 .page-header
-  = link_to links_path, class: 'btn btn-default' do 
+  = link_to newsletter_email_path(@link.email.newsletter, @link.email), class: 'btn btn-default' do
     i.fa.fa-list-alt
-    |  Back 
+    |  Back To Email
   = link_to edit_link_path(@link), class: 'btn btn-primary' do 
     i.fa.fa-pencil
     |  Edit 
@@ -23,7 +23,7 @@ dl.dl-horizontal
   dt
     | Category:
   dd
-    = @link.category
+    = @link.category.name
   dt
     | Email:
   dd

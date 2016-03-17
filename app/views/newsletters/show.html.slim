@@ -12,3 +12,25 @@ dl.dl-horizontal
   = link_to new_newsletter_email_path(@newsletter), class: 'btn btn-primary' do 
     i.fa.fa-plus
     |  New Email
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Name
+        th
+          | Send date
+        th
+        th
+    tbody
+      - @emails.each do | email |
+        tr
+          td
+            = link_to email.name, newsletter_email_path(email.newsletter, email)
+          td
+            = email.send_date
+          td
+            = link_to 'Edit', edit_newsletter_email_path(email.newsletter, email)
+          td
+            = link_to 'Destroy', newsletter_email_path(email.newsletter, email), method: :delete, data: { confirm: 'Are you sure?' } 

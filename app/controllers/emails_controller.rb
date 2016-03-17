@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: emails
+#
+#  id            :integer          not null, primary key
+#  name          :string
+#  newsletter_id :integer
+#  send_date     :datetime
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class EmailsController < ApplicationController
   before_filter :set_newsletter
   before_action :authenticate_user!
@@ -12,6 +24,7 @@ class EmailsController < ApplicationController
   # GET /emails/1
   # GET /emails/1.json
   def show
+    @links = @email.links.includes(:category)
   end
 
   # GET /emails/new

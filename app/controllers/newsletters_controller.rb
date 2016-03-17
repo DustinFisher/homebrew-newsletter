@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: newsletters
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class NewslettersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_newsletter, only: [:show, :edit, :update, :destroy]
@@ -11,6 +22,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters/1
   # GET /newsletters/1.json
   def show
+    @emails = @newsletter.emails
   end
 
   # GET /newsletters/new

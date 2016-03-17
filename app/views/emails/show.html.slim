@@ -6,17 +6,45 @@
     i.fa.fa-pencil
     |  Edit 
   h1
-    | Show email
-dl.dl-horizontal
-  dt
-    | Name:
-  dd
-    = @email.name
-  dt
-    | Newsletter:
-  dd
-    = @email.newsletter.name
-  dt
-    | Send date:
-  dd
-    = @email.send_date
+    = "#{@email.name} (#{@newsletter.name})"
+div
+  | Send date: 
+  = @email.send_date
+
+
+.page-header
+  = link_to new_link_path(email_id: @email.id), class: 'btn btn-primary' do 
+    i.fa.fa-plus
+    |  New Link
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Name
+        th
+          | Description
+        th
+          | Url
+        th
+          | Category
+        th
+        th
+    tbody
+      - @links.each do | link |
+        tr
+          td
+            = link_to link.name, link
+          td
+            = truncate(link.description, length: 25)
+          td
+            = link_to link.url, link.url
+          td
+            = link.category.name
+          td
+            = link_to edit_link_path(link) do
+              i.fa.fa-pencil
+          td
+            = link_to link, method: :delete, data: { confirm: 'Are you sure?' } do
+              i.fa.fa-remove
