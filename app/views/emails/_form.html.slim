@@ -1,9 +1,10 @@
-= simple_form_for([@newsletter, @email]) do |f|
+= simple_form_for(@email) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :name
     = f.input :send_date
+    = f.association :newsletter
 
   .form-actions
     = f.button :submit

@@ -9,7 +9,7 @@
     = @newsletter.name
     |  Newsletter
 dl.dl-horizontal
-  = link_to new_newsletter_email_path(@newsletter), class: 'btn btn-primary' do 
+  = link_to new_email_path(newsletter_id: @newsletter.id), class: 'btn btn-primary' do 
     i.fa.fa-plus
     |  New Email
 
@@ -23,14 +23,17 @@ dl.dl-horizontal
           | Send date
         th
         th
+        th
     tbody
-      - @emails.each do | email |
+      - @emails.each do |email|
         tr
           td
-            = link_to email.name, newsletter_email_path(email.newsletter, email)
+            = link_to email.name, email_path(email)
           td
             = email.send_date
           td
-            = link_to 'Edit', edit_newsletter_email_path(email.newsletter, email)
+            = link_to 'Build', build_email_path(email)
           td
-            = link_to 'Destroy', newsletter_email_path(email.newsletter, email), method: :delete, data: { confirm: 'Are you sure?' } 
+            = link_to 'Edit', edit_email_path(email)
+          td
+            = link_to 'Destroy', email_path(email), method: :delete, data: { confirm: 'Are you sure?' } 

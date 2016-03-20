@@ -11,35 +11,39 @@
 #
 
 class EmailsController < ApplicationController
-  before_filter :set_newsletter
   before_action :authenticate_user!
-  before_action :set_email, only: [:show, :edit, :update, :destroy]
+  before_action :set_email, only: [:show, :edit, :update, :destroy, :build]
 
   # GET /emails
   # GET /emails.json
   def index
-    @emails = @newsletter.emails.all
+    newsletter = Newsletter.find(params[:newsletter_id])
+    @emails = newsletter.emails.all
   end
 
   # GET /emails/1
   # GET /emails/1.json
   def show
+    @newsletter = @email.newsletter
     @links = @email.links.includes(:category)
   end
 
   # GET /emails/new
   def new
-    @email = @newsletter.emails.new
+    @email = Email.new(newsletter_id: params[:newsletter_id])
+
+    @email
   end
 
   # GET /emails/1/edit
   def edit
+    @newsletter = @email.newsletter
   end
 
   # POST /emails
   # POST /emails.json
   def create
-    @email = @newsletter.emails.new(email_params)
+    @email = Email.new(email_params)
 
     respond_to do |format|
       if @email.save
@@ -76,14 +80,14 @@ class EmailsController < ApplicationController
     end
   end
 
+  def build
+    @html = @email.build
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_email
       @email = Email.find(params[:id])
-    end
-
-    def set_newsletter
-      @newsletter = Newsletter.find(params[:newsletter_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

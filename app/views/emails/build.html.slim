@@ -1,0 +1,9 @@
+.page-header
+  = link_to newsletter_path, class: 'btn btn-default' do 
+    i.fa.fa-list-alt
+    |  Back 
+  h1
+    = "#{@email.name} (#{@email.newsletter.name})"
+div
+  | Build 
+

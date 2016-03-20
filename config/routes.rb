@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :categories
   resources :links
-  resources :newsletters do
-    resources :emails
+  resources :newsletters
+  resources :emails do
+    member do
+      get 'build'
+    end
   end
 
   devise_for :users
