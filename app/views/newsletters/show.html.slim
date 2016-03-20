@@ -1,0 +1,39 @@
+.page-header
+  = link_to newsletters_path, class: 'btn btn-default' do 
+    i.fa.fa-list-alt
+    |  Back 
+  = link_to edit_newsletter_path(@newsletter), class: 'btn btn-primary' do 
+    i.fa.fa-pencil
+    |  Edit 
+  h1
+    = @newsletter.name
+    |  Newsletter
+dl.dl-horizontal
+  = link_to new_email_path(newsletter_id: @newsletter.id), class: 'btn btn-primary' do 
+    i.fa.fa-plus
+    |  New Email
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Name
+        th
+          | Send date
+        th
+        th
+        th
+    tbody
+      - @emails.each do |email|
+        tr
+          td
+            = link_to email.name, email_path(email)
+          td
+            = email.send_date
+          td
+            = link_to 'Build', build_email_path(email)
+          td
+            = link_to 'Edit', edit_email_path(email)
+          td
+            = link_to 'Destroy', email_path(email), method: :delete, data: { confirm: 'Are you sure?' } 

@@ -1,0 +1,35 @@
+.page-header
+  = link_to new_newsletter_email_path, class: 'btn btn-primary' do 
+    i.fa.fa-plus
+    |  New Email
+  h1
+    | Listing emails
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Name
+        th
+          | Newsletter
+        th
+          | Send date
+        th
+        th
+        th
+    tbody
+      - @emails.each do | email |
+        tr
+          td
+            = email.name
+          td
+            = email.newsletter.name
+          td
+            = email.send_date
+          td
+            = link_to 'Show', newsletter_email_path(email.newsletter, email)
+          td
+            = link_to 'Edit', edit_newsletter_email_path(email.newsletter, email)
+          td
+            = link_to 'Destroy', newsletter_email_path(email.newsletter, email), method: :delete, data: { confirm: 'Are you sure?' } 

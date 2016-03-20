@@ -25,3 +25,5 @@
 .gems/*
 
 config/database.yml
+
+.byebug_history

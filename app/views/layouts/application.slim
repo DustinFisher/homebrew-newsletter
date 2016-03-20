@@ -1,9 +1,9 @@
 doctype html
 html
   head
-    title BoosterShot
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    title Compiled
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
+    = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
   body
     nav.navbar.navbar-default.navbar-fixed-top
@@ -14,13 +14,13 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand href="#"  BoosterShot
+          a.navbar-brand href="#" Compiled
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li.active
-              a href="#"  Home
+              = link_to 'Newsletters', newsletters_path
             li
-              a href="#about"  About
+              = link_to 'Categories', categories_path
             li
               a href="#contact"  Contact
             li.dropdown
@@ -55,4 +55,4 @@ html
     #modal-holder
     footer.footer
       .container
-        p.text-muted 2016 &copy; BoosterShot
+        p.text-muted 2016 &copy; Compiled

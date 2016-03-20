@@ -1,0 +1,30 @@
+.page-header
+  = link_to email_path(@link.email), class: 'btn btn-default' do
+    i.fa.fa-list-alt
+    |  Back To Email
+  = link_to edit_link_path(@link), class: 'btn btn-primary' do 
+    i.fa.fa-pencil
+    |  Edit 
+  h1
+    | Show link
+dl.dl-horizontal
+  dt
+    | Name:
+  dd
+    = @link.name
+  dt
+    | Description:
+  dd
+    = @link.description
+  dt
+    | Url:
+  dd
+    = @link.url
+  dt
+    | Category:
+  dd
+    = @link.category.name
+  dt
+    | Email:
+  dd
+    = @link.email.name

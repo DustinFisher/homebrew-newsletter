@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'slim'
 gem 'slim-rails'
 gem 'sqlite3'
+gem 'turbolinks'
 gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 
